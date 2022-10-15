@@ -36,6 +36,14 @@ const SectionComponentContent = styled.div`
   padding-top: 1rem;
 `;
 
+const NavbarLinkButton = styled.button`
+  background-color: transparent;
+  color: white;
+  border: none;
+  font-family: Lora;
+  font-size: 20px;
+`;
+
 const sectionEntries = [
   {
     navbarTitle: "Music",
@@ -80,9 +88,9 @@ class App extends React.Component {
           </HeaderImageContainer>
           <NavBarbutton>
             {sectionEntries.map((entry) => (
-              <button key={entry.navbarTitle} to={entry.navbarLink}>
+              <NavbarLinkButton key={entry.navbarTitle} to={entry.navbarLink}>
                 {entry.navbarTitle}
-              </button>
+              </NavbarLinkButton>
             ))}
           </NavBarbutton>
         </header>
