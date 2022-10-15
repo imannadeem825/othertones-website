@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Link, Router,  } from 'react-router-dom';
 import logo from './images/Othertones-Logo-White.png';
 import styled from 'styled-components';
 
@@ -17,30 +16,56 @@ const NavBarbutton = styled.div`
   justify-content: space-evenly;
 `
 
-const navbarEntries = [
+const SectionContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+`
+const SectionComponentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
+const SectionComponentHeader = styled.div`
+  padding-top: 2rem;
+  font-size: 28px;
+  margin: auto;
+`
+
+const SectionComponentContent = styled.div`
+  padding-top: 1rem;
+`
+
+const sectionEntries = [
   {
     navbarTitle: "Music",
-    navbarLink: "/"
+    navbarLink: "/",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   },  
   {
     navbarTitle: "Shows",
-    navbarLink: "/"
+    navbarLink: "/",
+    content: "content"
   },  
   {
     navbarTitle: "Store",
-    navbarLink: "/"
+    navbarLink: "/",
+    content: "content"
   }, 
   {
     navbarTitle: "Visuals",
-    navbarLink: "/"
+    navbarLink: "/",
+    content: "content"
   },  
   {
     navbarTitle: "Bio",
-    navbarLink: "/"
+    navbarLink: "/",
+    content: "content"
   },  
   {
     navbarTitle: "Contact",
-    navbarLink: "/"
+    navbarLink: "/",
+    content: "content"
   },
 ]
 
@@ -53,9 +78,17 @@ class App extends React.Component {
             <HeaderImage src={logo} alt="Othertones logo white" />
           </HeaderImageContainer>
           <NavBarbutton>
-            { navbarEntries.map((entry) => <button key={entry.navbarTitle} to={entry.navbarLink}>{entry.navbarTitle}</button>) }
+            { sectionEntries.map((entry) => <button key={entry.navbarTitle} to={entry.navbarLink}>{entry.navbarTitle}</button>) }
           </NavBarbutton>
         </header>
+          <SectionContainer>
+            { sectionEntries.map((entry) => (
+              <SectionComponentContainer key={`section-${entry.navbarTitle}`}>
+                <SectionComponentHeader>{entry.navbarTitle}</SectionComponentHeader>
+                <SectionComponentContent>{entry.content}</SectionComponentContent>
+              </SectionComponentContainer>
+            ))}
+          </SectionContainer>
       </div>
     );
   }
