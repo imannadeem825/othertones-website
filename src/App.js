@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import logo from "./images/Othertones-Logo-White.png";
 import styled from "styled-components";
+import Bio from './components/Bio'
 
 import { AiOutlineMenu } from "react-icons/ai";
 import { FaTiktok } from "react-icons/fa";
@@ -70,6 +71,9 @@ const SocialMediaDrawer = styled.div`
   transition: 0.5s;
 `;
 
+const contactEmailAddress = "othertonesmusic@gmail.com";
+const bioBlurb = `Othertones is the solo project of Nashville, Tennessee based musician Iman Nadeem. In addition to lending her powerhouse pop-rock vocals and songwriting to Othertones, Iman is a producer, arranger and multi-instrumentalist. Othertones explores the blurring of many rock subgenres, such as pop-punk and emo rock. The project also utilizes Iman’s unique intersection of marginalized backgrounds, which provide a rare perspective of lyrical content in a white male-dominated scene. Iman’s goal is to help young people of all identities feel seen and heard, and she aims to provide a safe haven and sense of belonging for those who feel othered in their daily lives.`;
+
 const sectionEntries = [
   {
     navbarTitle: "Music",
@@ -95,7 +99,7 @@ const sectionEntries = [
   {
     navbarTitle: "Bio",
     navbarLink: "/",
-    content: "content",
+    content: <Bio bioBlurb={bioBlurb} contactEmailAddress={contactEmailAddress} />,
   },
   {
     navbarTitle: "Contact",
