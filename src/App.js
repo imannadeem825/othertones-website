@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import logo from "./images/Othertones-Logo-White.png";
 import styled from "styled-components";
-import Bio from './components/Bio'
+import Bio from "./components/Bio";
 
 import { AiOutlineMenu } from "react-icons/ai";
 import { FaTiktok } from "react-icons/fa";
@@ -99,7 +99,9 @@ const sectionEntries = [
   {
     navbarTitle: "Bio",
     navbarLink: "/",
-    content: <Bio bioBlurb={bioBlurb} contactEmailAddress={contactEmailAddress} />,
+    content: (
+      <Bio bioBlurb={bioBlurb} contactEmailAddress={contactEmailAddress} />
+    ),
   },
   {
     navbarTitle: "Contact",
