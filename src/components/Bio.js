@@ -1,71 +1,117 @@
+import { useState } from "react";
 import bioPic from "../images/Bio Photo.jpg";
 import { FaCopy } from "react-icons/fa";
+import styled from "styled-components";
+
+const BioContainer = styled.div`
+  display: flex;
+  width: 85%;
+  justify-content: center;
+`;
+
+const BioImage = styled.img`
+  width: 300px;
+`;
+
+const BioContent = styled.div`
+  display: flex;
+  height: inherit;
+  width: 50%;
+  padding-left: 2rem;
+  line-height: 1.5rem;
+  text-justify: inter-word;
+  padding-top: 0.5rem;
+  font-size: 18px;
+`;
+
+const BioContactContainer = styled.div`
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  top: 8rem;
+`;
+
+const InquiriesContainer = styled.div`
+  font-size: 22px;
+  padding: 1rem;
+`;
+
+const InquiriesHeader = styled.span`
+  border-bottom: 1px solid white;
+  padding-bottom: 5px;
+  text-transform: capitalize;
+`;
+
+const Tooltip = styled.div`
+  position: relative;
+  background-color: green;
+  padding: 0.5rem;
+  border-radius: 0.8rem;
+  bottom: 2rem;
+  margin-right: 0;
+  margin-left: auto;
+  transition: 0.5s;
+  width: 200px;
+  opacity: ${(props) => (props.isVisible ? "1" : "0")};
+`;
+
+const CarrotToolTip = styled.div`
+  content: "";
+  position: absolute;
+  width: 0.8rem;
+  height: 0.8rem;
+  right: 208px;
+  background-color: green;
+  transform: rotate(45deg);
+  bottom: 12px;
+`;
 
 function Bio(props) {
   const { bioBlurb, contactEmailAddress } = props;
+  const [isToolTipVisible, setIsToolTipVisible] = useState(false);
 
-  //TODO: Break these out into styled components
   return (
-    <div style={{ display: "flex", width: "85%", justifyContent: "center" }}>
+    <BioContainer>
       <div>
-        <img
-          style={{ width: "300px" }}
-          src={bioPic}
-          alt="Othertones playing a set"
-        />
+        <BioImage src={bioPic} alt="Othertones playing a set" />
       </div>
-      <div
-        style={{
-          display: "flex",
-          height: "inherit",
-          width: "50%",
-          paddingLeft: "2rem",
-          lineHeight: "1.5rem",
-          textJustify: "interWord",
-          paddingTop: ".5rem",
-          fontSize: "18px",
-        }}
-      >
+      <BioContent>
         <div>
           <div>{bioBlurb}</div>
-          <div
-            style={{
-              width: "90%",
-              margin: "0 auto",
-              textAlign: "center",
-              position: "relative",
-              top: "8rem",
-            }}
-          >
-            <div style={{ fontSize: "22px", padding: "1rem" }}>
-              <span
-                style={{
-                  borderBottom: "1px solid white",
-                  paddingBottom: "5px",
-                  textTransform: "capitalize",
-                }}
-              >
-                Please direct all inquiries to:
-              </span>
-            </div>
+          <BioContactContainer>
+            <InquiriesContainer>
+              <InquiriesHeader>Please direct all inquiries to:</InquiriesHeader>
+            </InquiriesContainer>
             <div>
               <span>{contactEmailAddress}</span>
-              {/*TODO: Add confirmation animation on copy to clipboard success!*/}
               <FaCopy
+                style={{
+                  position: "relative",
+                  top: "3px",
+                  left: "5px",
+                  cursor: "pointer",
+                }}
                 onClick={async (event, elem) => {
                   try {
                     await navigator.clipboard.writeText(contactEmailAddress);
                   } catch (err) {
                     console.log(err);
+                    return;
                   }
+                  setIsToolTipVisible(true);
+                  setTimeout(() => setIsToolTipVisible(false), 2000);
                 }}
-                style={{ position: "relative", top: "3px", left: "5px" }}
               />
+              <Tooltip isVisible={isToolTipVisible}>
+                <span>Copied To Clipboard</span>
+                <CarrotToolTip />
+              </Tooltip>
             </div>
-          </div>
+          </BioContactContainer>
         </div>
-      </div>
-    </div>
+      </BioContent>
+    </BioContainer>
   );
 }
 
