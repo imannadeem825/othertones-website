@@ -9,6 +9,7 @@ import { BsInstagram } from "react-icons/bs";
 import { BsTwitter } from "react-icons/bs";
 import { BsFacebook } from "react-icons/bs";
 import { FaYoutube } from "react-icons/fa";
+import Shows from "./components/Shows";
 
 const HeaderImageContainer = styled.div`
   display: flex;
@@ -84,7 +85,7 @@ const sectionEntries = [
   {
     navbarTitle: "Shows",
     navbarLink: "/",
-    content: "content",
+    content: (<Shows/>),
   },
   {
     navbarTitle: "Store",
