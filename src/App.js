@@ -85,7 +85,7 @@ const sectionEntries = [
   {
     navbarTitle: "Shows",
     navbarLink: "/",
-    content: (<Shows/>),
+    content: <Shows />,
   },
   {
     navbarTitle: "Store",
