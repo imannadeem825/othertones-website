@@ -10,6 +10,7 @@ import { BsTwitter } from "react-icons/bs";
 import { BsFacebook } from "react-icons/bs";
 import { FaYoutube } from "react-icons/fa";
 import Shows from "./components/Shows";
+import Visuals from "./components/Visuals";
 
 const HeaderImageContainer = styled.div`
   display: flex;
@@ -95,7 +96,7 @@ const sectionEntries = [
   {
     navbarTitle: "Visuals",
     navbarLink: "/",
-    content: "content",
+    content: <Visuals />,
   },
   {
     navbarTitle: "Bio",
