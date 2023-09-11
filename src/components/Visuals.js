@@ -99,11 +99,11 @@ export default function Visuals(props) {
       </VideoContainer>
       <CarouselContainer>
         {/* TODO: Make sure to figure out how we want the transition animations. Fade like this? https://getbootstrap.com/docs/4.1/components/carousel/#crossfade*/}
-        <Carousel 
-          showThumbs={false} 
-          statusFormatter={() => {}} 
-          infiniteLoop={true} 
-          autoPlay={true} 
+        <Carousel
+          showThumbs={false}
+          statusFormatter={() => {}}
+          infiniteLoop={true}
+          autoPlay={true}
           transitionTime={1000}
         >
           <div>

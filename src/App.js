@@ -109,22 +109,22 @@ function App({ sectionEntries }) {
         ))}
       </SocialMediaDrawer>
       <div>
-        <Header 
-          logo={logo} 
+        <Header
+          logo={logo}
           sectionEntries={sectionEntries.map((entry) => (
             <NavbarLinkButton key={entry.navbarTitle} href={entry.href}>
               {entry.navbarTitle}
             </NavbarLinkButton>
-          ))} 
-          auxillaryMenuData={(  
-          <SocialMediaMenu>
-            <AiOutlineMenu
-              onClick={() =>
-                setIsSocialMediaDrawerOpen(!isSocialMediaDrawerOpen)
-              }
-            />
-          </SocialMediaMenu>
-          )} 
+          ))}
+          auxillaryMenuData={
+            <SocialMediaMenu>
+              <AiOutlineMenu
+                onClick={() =>
+                  setIsSocialMediaDrawerOpen(!isSocialMediaDrawerOpen)
+                }
+              />
+            </SocialMediaMenu>
+          }
         />
         <SectionContainer>
           {sectionEntries.map((entry) => (

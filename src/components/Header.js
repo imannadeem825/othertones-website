@@ -16,14 +16,12 @@ const NavBarbutton = styled.div`
 
 export default function Header({ logo, sectionEntries, auxillaryMenuData }) {
   return (
-      <header>
-        {auxillaryMenuData}
-        <HeaderImageContainer>
-          <HeaderImage src={logo} alt="Othertones logo white" />
-        </HeaderImageContainer>
-        <NavBarbutton>
-          {sectionEntries}
-        </NavBarbutton>
-      </header>
-  )
+    <header>
+      {auxillaryMenuData}
+      <HeaderImageContainer>
+        <HeaderImage src={logo} alt="Othertones logo white" />
+      </HeaderImageContainer>
+      <NavBarbutton>{sectionEntries}</NavBarbutton>
+    </header>
+  );
 }

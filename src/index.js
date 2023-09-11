@@ -57,28 +57,24 @@ const sectionEntries = [
   },
 ];
 
-
-const router = createBrowserRouter(
-  [
-    {
-      path: "/",
-      element: ( 
-        <React.StrictMode>
-          <App sectionEntries={sectionEntries}/>
-        </React.StrictMode>
-      )
-    },
-    {
-      path: "/store",
-      element: ( 
-        <React.StrictMode>
-          <StoreExperience sectionEntries={sectionEntries}/>
-        </React.StrictMode>
-      )
-    },
-
-  ]
-)
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <React.StrictMode>
+        <App sectionEntries={sectionEntries} />
+      </React.StrictMode>
+    ),
+  },
+  {
+    path: "/store",
+    element: (
+      <React.StrictMode>
+        <StoreExperience sectionEntries={sectionEntries} />
+      </React.StrictMode>
+    ),
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<RouterProvider router={router} />);
