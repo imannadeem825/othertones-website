@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 const ShowsContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -67,6 +68,7 @@ const ShowLinkOut = styled.a`
 `;
 
 function Shows() {
+  //TODO: Disable row when the date has passed for the show as well
   const getShowCallToAction = (soldOut, ticketLink) => (
     <ShowLinkOut href={ticketLink} target="_blank" soldOut={soldOut}>
       <ShowCallToActionButton>

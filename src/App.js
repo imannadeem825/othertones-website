@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import logo from "./images/Othertones-Logo-White.png";
 import styled from "styled-components";
-import Bio from "./components/Bio";
 
 import { AiOutlineMenu } from "react-icons/ai";
 import { FaTiktok } from "react-icons/fa";
@@ -9,22 +8,8 @@ import { BsInstagram } from "react-icons/bs";
 import { BsTwitter } from "react-icons/bs";
 import { BsFacebook } from "react-icons/bs";
 import { FaYoutube } from "react-icons/fa";
-import Shows from "./components/Shows";
-import Visuals from "./components/Visuals";
 
-const HeaderImageContainer = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
-const HeaderImage = styled.img`
-  width: 75%;
-`;
-
-const NavBarbutton = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-`;
+import Header from "./components/Header";
 
 const SectionContainer = styled.div`
   display: flex;
@@ -46,14 +31,6 @@ const SectionComponentContent = styled.div`
   padding-top: 1rem;
 `;
 
-const NavbarLinkButton = styled.button`
-  background-color: transparent;
-  color: white;
-  border: none;
-  font-family: Lora;
-  font-size: 20px;
-`;
-
 const SocialMediaMenu = styled.div`
   position: absolute;
   right: 0;
@@ -73,44 +50,14 @@ const SocialMediaDrawer = styled.div`
   transition: 0.5s;
 `;
 
-const contactEmailAddress = "othertonesmusic@gmail.com";
-const bioBlurb = `Othertones is the solo project of Nashville, Tennessee based musician Iman Nadeem. In addition to lending her powerhouse pop-rock vocals and songwriting to Othertones, Iman is a producer, arranger and multi-instrumentalist. Othertones explores the blurring of many rock subgenres, such as pop-punk and emo rock. The project also utilizes Iman’s unique intersection of marginalized backgrounds, which provide a rare perspective of lyrical content in a white male-dominated scene. Iman’s goal is to help young people of all identities feel seen and heard, and she aims to provide a safe haven and sense of belonging for those who feel othered in their daily lives.`;
-
-const sectionEntries = [
-  {
-    navbarTitle: "Music",
-    navbarLink: "/",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  },
-  {
-    navbarTitle: "Shows",
-    navbarLink: "/",
-    content: <Shows />,
-  },
-  {
-    navbarTitle: "Store",
-    navbarLink: "/",
-    content: "content",
-  },
-  {
-    navbarTitle: "Visuals",
-    navbarLink: "/",
-    content: <Visuals />,
-  },
-  {
-    navbarTitle: "Bio",
-    navbarLink: "/",
-    content: (
-      <Bio bioBlurb={bioBlurb} contactEmailAddress={contactEmailAddress} />
-    ),
-  },
-  {
-    navbarTitle: "Contact",
-    navbarLink: "/",
-    content: "content",
-  },
-];
+const NavbarLinkButton = styled.a`
+  background-color: transparent;
+  color: white;
+  border: none;
+  font-family: Lora;
+  font-size: 20px;
+  text-decoration: none;
+`;
 
 const socialMediaEntries = [
   {
@@ -140,7 +87,7 @@ const socialMediaEntries = [
   },
 ];
 
-function App() {
+function App({ sectionEntries }) {
   const [isSocialMediaDrawerOpen, setIsSocialMediaDrawerOpen] = useState(false);
 
   return (
@@ -162,7 +109,14 @@ function App() {
         ))}
       </SocialMediaDrawer>
       <div>
-        <header>
+        <Header 
+          logo={logo} 
+          sectionEntries={sectionEntries.map((entry) => (
+            <NavbarLinkButton key={entry.navbarTitle} href={entry.href}>
+              {entry.navbarTitle}
+            </NavbarLinkButton>
+          ))} 
+          auxillaryMenuData={(  
           <SocialMediaMenu>
             <AiOutlineMenu
               onClick={() =>
@@ -170,21 +124,12 @@ function App() {
               }
             />
           </SocialMediaMenu>
-          <HeaderImageContainer>
-            <HeaderImage src={logo} alt="Othertones logo white" />
-          </HeaderImageContainer>
-          <NavBarbutton>
-            {sectionEntries.map((entry) => (
-              <NavbarLinkButton key={entry.navbarTitle} to={entry.navbarLink}>
-                {entry.navbarTitle}
-              </NavbarLinkButton>
-            ))}
-          </NavBarbutton>
-        </header>
+          )} 
+        />
         <SectionContainer>
           {sectionEntries.map((entry) => (
             <SectionComponentContainer key={`section-${entry.navbarTitle}`}>
-              <SectionComponentHeader>
+              <SectionComponentHeader id={entry.href.slice(1)}>
                 {entry.navbarTitle}
               </SectionComponentHeader>
               <SectionComponentContent>{entry.content}</SectionComponentContent>
